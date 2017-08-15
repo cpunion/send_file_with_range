@@ -6,7 +6,6 @@ module SendFileWithRange
       else
         super path, options
       end
-      debugger
     end
 
     def send_file_with_range(path, options = {})
