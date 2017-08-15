@@ -20,7 +20,7 @@ gem 'send_file_with_range'
 
 ## Usage
 
-To use this, you just need to pass the `:range => true` option to a normal
+To use this, you just need to pass the `range: true` option to a normal
 `send_file` call.
 
 ```ruby
@@ -28,7 +28,7 @@ class VideoController < ApplicationController
 
   def play
     path_to_video = Rails.root.join('data', 'some-video.mp4')
-    send_file path_to_video, :range => true, :disposition => 'inline', :type => 'video/mp4's
+    send_file path_to_video, range: true, disposition: 'inline', type: 'video/mp4'
   end
 
 end
