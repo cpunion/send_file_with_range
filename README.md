@@ -1,3 +1,7 @@
+This is a fork of [Adam Cooke](https://github.com/adamcooke)'s `send_file_with_range` gem with added support for Rails 5.1 courtesy of [Metalels](https://github.com/metalels) and support for a buffer size option courtesy of me.
+
+------
+
 # `send_file` with Range
 
 Rails includes a method called `send_file` which allows you to send a file from
@@ -32,4 +36,13 @@ class VideoController < ApplicationController
   end
 
 end
+```
+
+An optional `buffer_size` option can be passed which will prevent the server from crashing on large files by only reading the requested range bytes.
+
+```ruby
+send_file_with_range @medium.path, type: 'video/mp4',
+                                   disposition: 'inline',
+                                   range: true,
+                                   buffer_size: 512_000 # Send around 512kib
 ```
