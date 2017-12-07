@@ -23,7 +23,8 @@ module SendFileWithRange
             logger.info("Range: #{request.headers['range']}")
             begin_point = Regexp.last_match(1).to_i
             end_point = Regexp.last_match(2).to_i if Regexp.last_match(2).present?
-
+            # Only override requested end point if the buffer size doesn't
+            # overflow the end of the file.
             end_point = begin_point + options[:buffer_size] if begin_point + options[:buffer_size] <= file_size - 1
           end
         end
